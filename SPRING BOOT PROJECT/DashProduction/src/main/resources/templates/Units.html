@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Production Analytical System</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
+</head>
+<body>
+   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Dash Umbrella Industry</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/unit_details/new}">Enter Production</a>
+      </li>
+     
+    </ul>
+  </div>
+</nav>
+
+<br>
+<br>
+
+
+  <div class="container">
+    <div class="row">
+      <h1>Production Details</h1>
+      
+    </div>
+      
+      
+      <div class="row">
+        <div class="col-lg-3">
+          <a th:href="@{/unit_details/new}" class="btn btn-primary btn-sm mb-3">Add Unit Info</a>
+        
+        </div>
+      
+      </div>
+    
+    
+    
+    
+    
+     <table class="table table-striped table table-bordered">
+     <thead class="table-dark">
+     
+       <tr>
+         <th>Unit Id</th>
+         <th>Date</th>
+         <th>Supervisor Id</th>
+         <th>Present Employees</th>
+         <th>Absent Employees</th>
+         <th>Total Production</th>
+         <th>Damage Count</th>
+         <th>Action</th>
+         
+         
+       
+       
+       </tr>
+     
+     
+     </thead>
+     
+     <tbody>
+     
+       <tr th:each="unit: ${unit_details}">
+         <td th:text = "${unit.unitId}"></td>
+         <td th:text = "${unit.date}"></td>
+         <td th:text = "${unit.supervisorId}"></td>
+         <td th:text = "${unit.presentEmployee}"></td>
+         <td th:text = "${unit.absentEmployee}"></td>
+         <td th:text = "${unit.totalProduction}"></td>
+         <td th:text = "${unit.damageCount}"></td>
+         <td>
+            <a th:href="@{/unit_details/edit/{unitId}(unitId=${unit.unitId})}" class="btn btn-primary">Update</a>
+            
+            <a th:href="@{/unit_details/{unitId}(unitId=${unit.unitId})}" class="btn btn-danger">Delete</a>
+         </td>
+       
+       </tr>
+     
+     
+     
+     </tbody>
+     
+     
+     </table>
+  
+  
+  
+ </div>
+
+</body>
+</html>
